@@ -1,7 +1,7 @@
 import Sequelize from 'sequelize'
 import {sequelize} from '../database/database'
 
-const UserDocumentation = sequelize.define('user_documentation',{
+const UserDocumentations = sequelize.define('user_documentations',{
     id:{
         type: Sequelize.INTEGER,
         primaryKey: true,
@@ -29,4 +29,4 @@ const UserDocumentation = sequelize.define('user_documentation',{
     timestamps: false
 })
 
-export default UserDocumentation;
+export default UserDocumentations;

@@ -1,7 +1,7 @@
 import Sequelize from 'sequelize'
 import {sequelize} from '../database/database'
 
-const UserVacination = sequelize.define('user_vacination',{
+const UserVacinations = sequelize.define('user_vacinations',{
     id:{
         type: Sequelize.INTEGER,
         primaryKey: true,
@@ -29,4 +29,4 @@ const UserVacination = sequelize.define('user_vacination',{
     timestamps: false
 })
 
-export default UserVacination;
+export default UserVacinations;

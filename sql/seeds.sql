@@ -1,15 +1,15 @@
 DROP TABLE users CASCADE ;
 DROP TABLE documentations CASCADE ;
-DROP TABLE favorite_nannys CASCADE ;
+DROP TABLE favorite_nannies CASCADE ;
 DROP TABLE wallet_transactions CASCADE ;
-DROP TABLE wallet CASCADE ;
+DROP TABLE wallets CASCADE ;
 DROP TABLE cancel_jobs CASCADE ;
 DROP TABLE checkpoint_jobs CASCADE ;
 DROP TABLE user_payment_methods CASCADE ;
 DROP TABLE user_interesteds CASCADE ;
 DROP TABLE user_vacinations CASCADE ;
 DROP TABLE user_documentations CASCADE ;
-DROP TABLE user_disponibilitys CASCADE ; 
+DROP TABLE user_disponibilities CASCADE ; 
 DROP TABLE cancel_justify CASCADE ;
 DROP TABLE status_jobs CASCADE ;
 DROP TABLE payment_methods CASCADE ;
@@ -126,7 +126,7 @@ create table users(
 );
 
 
-create table user_disponibilitys(
+create table user_disponibilities(
 	id serial primary key, 
 	user_id	integer,
 	initial_week_day	integer,
@@ -235,13 +235,16 @@ create table jobs_stages(
  
 create table checkpoint_jobs(
 	id serial primary key, 
+	job_id	integer	,
 	description	Varchar(50)	,
 	date timestamp	,
 	hour time	,
 	active	bool default true,
 	created_at	timestamp default current_timestamp,
 	updated_at	timestamp,
-	imported_at	timestamp 
+	imported_at	timestamp,
+
+ 	FOREIGN KEY (job_id) REFERENCES jobs (id)
 );
 
   
@@ -260,7 +263,7 @@ create table cancel_jobs(
 );
 
 
-create table wallet(
+create table wallets(
 	id serial primary key, 
 	user_id	integer,
 	current_value double precision,
@@ -289,7 +292,7 @@ create table wallet_transactions(
 
  
 
-create table favorite_nannys(
+create table favorite_nannies(
 	id serial primary key,  
 	parent_id integer,
 	nanny_id integer,
@@ -302,6 +305,3 @@ create table favorite_nannys(
  	FOREIGN KEY (parent_id) REFERENCES users (id),
  	FOREIGN KEY (nanny_id) REFERENCES users (id) 
 );
-
-
-

@@ -2,7 +2,9 @@ import Jobs from '../models/Jobs';
 
 export async function createJobss(req, res){
  
-    const {name} = req.body
+    const {nanny_id, parent_id, adress, value,
+           description, initial_date, final_date, initial_hour, final_hour,
+           status_id, transaction_id, min_pay_value, max_pay_value } = req.body
     try {
         let newJobs = await Jobs.create({
             name
@@ -70,10 +72,14 @@ export async function deleteJobs(req, res){
 
 export async function updateJobs(req, res){
     const {id}= req.params;
-    const { name, active } = req.body;
+    const { nanny_id, parent_id, adress, value,
+        description, initial_date, final_date, initial_hour, final_hour,
+        status_id, transaction_id, min_pay_value, max_pay_value, active } = req.body;
 
     const jobs = await Jobs.findAll({
-        attributes: ['id', 'name', 'active'],
+        attributes: ['id', 'nanny_id', 'parent_id', 'adress', 'value',
+        'description', 'initial_date', 'final_date', 'initial_hour', 'final_hour',
+        'status_id', 'transaction_id', 'min_pay_value', 'max_pay_value', 'active'],
         where: {
             id
         }
@@ -82,8 +88,9 @@ export async function updateJobs(req, res){
     if (jobs.length > 0){
         jobs.forEach( async jobs => {
             await jobs.update({
-                name, 
-                active
+                nanny_id, parent_id, adress, value,
+                description, initial_date, final_date, initial_hour, final_hour,
+                status_id, transaction_id, min_pay_value, max_pay_value,active
             })        
         });
     }

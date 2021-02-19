@@ -2,10 +2,10 @@ import UserInterested from '../models/UserInterested';
 
 export async function createUserInteresteds(req, res){
  
-    const {name} = req.body
+    const {user_id, interested_description} = req.body
     try {
         let newUserInterested = await UserInterested.create({
-            name
+            user_id, interested_description
         })
     
         if (newUserInterested){
@@ -70,10 +70,10 @@ export async function deleteUserInterested(req, res){
 
 export async function updateUserInterested(req, res){
     const {id}= req.params;
-    const { name, active } = req.body;
+    const { user_id, interested_description, active } = req.body;
 
     const userInterested = await UserInterested.findAll({
-        attributes: ['id', 'name', 'active'],
+        attributes: ['id', 'user_id', 'interested_description', 'active'],
         where: {
             id
         }
@@ -82,13 +82,14 @@ export async function updateUserInterested(req, res){
     if (userInterested.length > 0){
         userInterested.forEach( async userInterested => {
             await userInterested.update({
-                name, 
+                user_id, 
+                interested_description, 
                 active
             })        
         });
     }
 
     return res.json({
-        message: 'CancelJutify Updated Successfully'
+        message: 'UserInterested Updated Successfully'
     })
 }

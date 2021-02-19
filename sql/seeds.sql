@@ -219,6 +219,20 @@ create table jobs(
 );
 
 
+create table jobs_tags(
+	id serial primary key, 
+	user_id	integer	,
+	job_id	integer	,
+	tag_id	integer	,
+	active	bool default true,
+	created_at	timestamp default current_timestamp,
+	updated_at	timestamp,
+	imported_at	timestamp,
+	
+ 	FOREIGN KEY (job_id) REFERENCES jobs (id),
+ 	FOREIGN KEY (tag_id) REFERENCES tags (id)
+);
+
 create table jobs_stages(
 	id serial primary key, 
 	job_id	integer	,
@@ -231,7 +245,6 @@ create table jobs_stages(
  	FOREIGN KEY (job_id) REFERENCES jobs (id),
  	FOREIGN KEY (tag_id) REFERENCES tags (id)
 );
-
  
 create table checkpoint_jobs(
 	id serial primary key, 

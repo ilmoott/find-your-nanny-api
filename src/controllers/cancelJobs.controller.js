@@ -2,10 +2,12 @@ import CancelJobs from '../models/CancelJobs';
 
 export async function createCancelJobss(req, res){
  
-    const {name} = req.body
+    const {job_id, cancel_id, comments} = req.body
     try {
         let newCancelJobs = await CancelJobs.create({
-            name
+            job_id, 
+            cancel_id, 
+            comments
         })
     
         if (newCancelJobs){
@@ -70,10 +72,13 @@ export async function deleteCancelJobs(req, res){
 
 export async function updateCancelJobs(req, res){
     const {id}= req.params;
-    const { name, active } = req.body;
+    const { job_id, 
+            cancel_id, 
+            comments, 
+            active } = req.body;
 
     const cancelJobs = await CancelJobs.findAll({
-        attributes: ['id', 'name', 'active'],
+        attributes: ['id', 'job_id', 'cancel_id', 'comments', 'active'],
         where: {
             id
         }
@@ -82,7 +87,9 @@ export async function updateCancelJobs(req, res){
     if (cancelJobs.length > 0){
         cancelJobs.forEach( async cancelJobs => {
             await cancelJobs.update({
-                name, 
+                job_id, 
+                cancel_id, 
+                comments,
                 active
             })        
         });

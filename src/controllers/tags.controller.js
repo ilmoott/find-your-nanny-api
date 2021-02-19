@@ -2,10 +2,10 @@ import Tags from '../models/Tags';
 
 export async function createTagss(req, res){
  
-    const {name} = req.body
+    const {name, type} = req.body
     try {
         let newTags = await Tags.create({
-            name
+            name, type
         })
     
         if (newTags){
@@ -70,7 +70,7 @@ export async function deleteTags(req, res){
 
 export async function updateTags(req, res){
     const {id}= req.params;
-    const { name, active } = req.body;
+    const { name, type, active } = req.body;
 
     const tags = await Tags.findAll({
         attributes: ['id', 'name', 'active'],
@@ -82,13 +82,13 @@ export async function updateTags(req, res){
     if (tags.length > 0){
         tags.forEach( async tags => {
             await tags.update({
-                name, 
+                name, type, 
                 active
             })        
         });
     }
 
     return res.json({
-        message: 'CancelJutify Updated Successfully'
+        message: 'Tags Updated Successfully'
     })
 }

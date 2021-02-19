@@ -2,10 +2,10 @@ import FavoriteNannies from '../models/FavoriteNannies';
 
 export async function createFavoriteNanniess(req, res){
  
-    const {name} = req.body
+    const {parent_id, nanny_id, value} = req.body
     try {
         let newFavoriteNannies = await FavoriteNannies.create({
-            name
+            parent_id, nanny_id, value
         })
     
         if (newFavoriteNannies){
@@ -70,10 +70,10 @@ export async function deleteFavoriteNannies(req, res){
 
 export async function updateFavoriteNannies(req, res){
     const {id}= req.params;
-    const { name, active } = req.body;
+    const { parent_id, nanny_id, value, active } = req.body;
 
     const favoriteNannies = await FavoriteNannies.findAll({
-        attributes: ['id', 'name', 'active'],
+        attributes: ['id', 'parent_id', 'nanny_id', 'value', 'active'],
         where: {
             id
         }
@@ -82,7 +82,9 @@ export async function updateFavoriteNannies(req, res){
     if (favoriteNannies.length > 0){
         favoriteNannies.forEach( async favoriteNannies => {
             await favoriteNannies.update({
-                name, 
+                parent_id, 
+                nanny_id, 
+                value,
                 active
             })        
         });

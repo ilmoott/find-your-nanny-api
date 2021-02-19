@@ -2,10 +2,10 @@ import JobsTags from '../models/JobsTags';
 
 export async function createJobsTagss(req, res){
  
-    const {name} = req.body
+    const {user_id, job_id, tag_id} = req.body
     try {
         let newJobsTags = await JobsTags.create({
-            name
+            user_id, job_id, tag_id
         })
     
         if (newJobsTags){
@@ -70,10 +70,10 @@ export async function deleteJobsTags(req, res){
 
 export async function updateJobsTags(req, res){
     const {id}= req.params;
-    const { name, active } = req.body;
+    const { user_id, job_id, tag_id, active } = req.body;
 
     const jobsTags = await JobsTags.findAll({
-        attributes: ['id', 'name', 'active'],
+        attributes: ['id', 'user_id', 'job_id', 'tag_id', 'active'],
         where: {
             id
         }
@@ -82,13 +82,13 @@ export async function updateJobsTags(req, res){
     if (jobsTags.length > 0){
         jobsTags.forEach( async jobsTags => {
             await jobsTags.update({
-                name, 
+                user_id, job_id, tag_id, 
                 active
             })        
         });
     }
 
     return res.json({
-        message: 'CancelJutify Updated Successfully'
+        message: 'JobsTags Updated Successfully'
     })
 }

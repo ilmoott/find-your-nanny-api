@@ -2,10 +2,15 @@ import UserPaymentMethods from '../models/UserPaymentMethods';
 
 export async function createUserPaymentMethodss(req, res){
  
-    const {name} = req.body
+    const {payment_method_id, user_id, type, agency, account, favorite} = req.body
     try {
         let newUserPaymentMethods = await UserPaymentMethods.create({
-            name
+            payment_method_id, 
+            user_id, 
+            type, 
+            agency, 
+            account,
+            favorite
         })
     
         if (newUserPaymentMethods){
@@ -70,10 +75,21 @@ export async function deleteUserPaymentMethods(req, res){
 
 export async function updateUserPaymentMethods(req, res){
     const {id}= req.params;
-    const { name, active } = req.body;
+    const { payment_method_id, 
+        user_id, 
+        type, 
+        agency, 
+        account,
+        favorite, active } = req.body;
 
     const userPaymentMethods = await UserPaymentMethods.findAll({
-        attributes: ['id', 'name', 'active'],
+        attributes: ['id', 
+        'payment_method_id', 
+        'user_id', 
+        'type', 
+        'agency', 
+        'account',
+        'favorite', 'active'],
         where: {
             id
         }
@@ -82,13 +98,18 @@ export async function updateUserPaymentMethods(req, res){
     if (userPaymentMethods.length > 0){
         userPaymentMethods.forEach( async userPaymentMethods => {
             await userPaymentMethods.update({
-                name, 
+                payment_method_id, 
+                user_id, 
+                type, 
+                agency, 
+                account,
+                favorite, 
                 active
             })        
         });
     }
 
     return res.json({
-        message: 'CancelJutify Updated Successfully'
+        message: 'UserPaymentMethods Updated Successfully'
     })
 }

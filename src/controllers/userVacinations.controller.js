@@ -2,10 +2,10 @@ import UserVacinations from '../models/UserVacinations';
 
 export async function createUserVacinationss(req, res){
  
-    const {name} = req.body
+    const {user_id, vacination_id} = req.body
     try {
         let newUserVacinations = await UserVacinations.create({
-            name
+            user_id, vacination_id
         })
     
         if (newUserVacinations){
@@ -70,10 +70,10 @@ export async function deleteUserVacinations(req, res){
 
 export async function updateUserVacinations(req, res){
     const {id}= req.params;
-    const { name, active } = req.body;
+    const { user_id, vacination_id, active } = req.body;
 
     const userVacinations = await UserVacinations.findAll({
-        attributes: ['id', 'name', 'active'],
+        attributes: ['id', 'user_id', 'vacination_id', 'active'],
         where: {
             id
         }
@@ -82,7 +82,8 @@ export async function updateUserVacinations(req, res){
     if (userVacinations.length > 0){
         userVacinations.forEach( async userVacinations => {
             await userVacinations.update({
-                name, 
+                user_id, 
+                vacination_id, 
                 active
             })        
         });

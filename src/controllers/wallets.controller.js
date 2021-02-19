@@ -1,17 +1,17 @@
-import UserVacinations from '../models/UserVacinations';
+import UserWallets from '../models/UserWallets';
 
-export async function createUserVacinationss(req, res){
+export async function createUserWalletss(req, res){
  
     const {name} = req.body
     try {
-        let newUserVacinations = await UserVacinations.create({
+        let newUserWallets = await UserWallets.create({
             name
         })
     
-        if (newUserVacinations){
+        if (newUserWallets){
             return res.json({
-                message: 'UserVacinations created successfully',
-                data: newUserVacinations
+                message: 'UserWallets created successfully',
+                data: newUserWallets
             });
         }
     } catch (error) {
@@ -25,12 +25,12 @@ export async function createUserVacinationss(req, res){
  
 }
 
-export async function getUserVacinationss(req, res){
+export async function getUserWalletss(req, res){
     try {
 
-        const userVacinations = await UserVacinations.findAll();
+        const userWallets = await UserWallets.findAll();
         res.json({
-            data: userVacinations
+            data: userWallets
         });
 
     } catch (error) {
@@ -43,45 +43,45 @@ export async function getUserVacinationss(req, res){
     }
 }
 
-export async function getUserVacinationsById(req, res){
+export async function getUserWalletsById(req, res){
     const {id} = req.params;
-    const userVacinations = await UserVacinations.findOne({
+    const userWallets = await UserWallets.findOne({
         where:{
             id
         }
     })
 
-    res.json(userVacinations)
+    res.json(userWallets)
 }
 
-export async function deleteUserVacinations(req, res){
+export async function deleteUserWallets(req, res){
     const {id}= req.params;
-    const deleteRowCount = await UserVacinations.destroy({
+    const deleteRowCount = await UserWallets.destroy({
         where:{
             id
         }
     })
     res.json({
-        message: 'UserVacinations deleted succesfully',
+        message: 'UserWallets deleted succesfully',
         count: deleteRowCount
 
     })
 }
 
-export async function updateUserVacinations(req, res){
+export async function updateUserWallets(req, res){
     const {id}= req.params;
     const { name, active } = req.body;
 
-    const userVacinations = await UserVacinations.findAll({
+    const userWallets = await UserWallets.findAll({
         attributes: ['id', 'name', 'active'],
         where: {
             id
         }
     })
 
-    if (userVacinations.length > 0){
-        userVacinations.forEach( async userVacinations => {
-            await userVacinations.update({
+    if (userWallets.length > 0){
+        userWallets.forEach( async userWallets => {
+            await userWallets.update({
                 name, 
                 active
             })        
@@ -89,6 +89,6 @@ export async function updateUserVacinations(req, res){
     }
 
     return res.json({
-        message: 'UserVacinations Updated Successfully'
+        message: 'UserWallets Updated Successfully'
     })
 }

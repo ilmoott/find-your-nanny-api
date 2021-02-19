@@ -2,10 +2,42 @@ import Users from '../models/Users';
 
 export async function createUserss(req, res){
  
-    const {name} = req.body
+    const {registered_number, 
+           username, 
+           password, 
+           first_name, 
+           last_name, phone,
+           date_of_birth,
+           age,
+           gender_id,
+           adres,
+           city,
+           state,
+           cell_phone,
+           email,
+           type,
+           photo,
+           your_description,
+           biography_description} = req.body
     try {
         let newUsers = await Users.create({
-            name
+            registered_number, 
+           username, 
+           password, 
+           first_name, 
+           last_name, phone,
+           date_of_birth,
+           age,
+           gender_id,
+           adres,
+           city,
+           state,
+           cell_phone,
+           email,
+           type,
+           photo,
+           your_description,
+           biography_description
         })
     
         if (newUsers){
@@ -70,10 +102,42 @@ export async function deleteUsers(req, res){
 
 export async function updateUsers(req, res){
     const {id}= req.params;
-    const { name, active } = req.body;
+    const { registered_number, 
+        username, 
+        password, 
+        first_name, 
+        last_name, phone,
+        date_of_birth,
+        age,
+        gender_id,
+        adres,
+        city,
+        state,
+        cell_phone,
+        email,
+        type,
+        photo,
+        your_description,
+        biography_description, active } = req.body;
 
     const users = await Users.findAll({
-        attributes: ['id', 'name', 'active'],
+        attributes: ['id','registered_number', 
+        'username', 
+        'password', 
+        'first_name', 
+        'last_name', 'phone',
+        'date_of_birth',
+        'age',
+        'gender_id',
+        'adres',
+        'city',
+        'state',
+        'cell_phone',
+        'email',
+        'type',
+        'photo',
+        'your_description',
+        'biography_description', 'active'],
         where: {
             id
         }
@@ -82,13 +146,29 @@ export async function updateUsers(req, res){
     if (users.length > 0){
         users.forEach( async users => {
             await users.update({
-                name, 
+                registered_number, 
+                username, 
+                password, 
+                first_name, 
+                last_name, phone,
+                date_of_birth,
+                age,
+                gender_id,
+                adres,
+                city,
+                state,
+                cell_phone,
+                email,
+                type,
+                photo,
+                your_description,
+                biography_description, 
                 active
             })        
         });
     }
 
     return res.json({
-        message: 'CancelJutify Updated Successfully'
+        message: 'Users Updated Successfully'
     })
 }

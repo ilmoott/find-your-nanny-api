@@ -2,10 +2,10 @@ import UserDocumentations from '../models/UserDocumentations';
 
 export async function createUserDocumentationss(req, res){
  
-    const {name} = req.body
+    const {user_id, documentation_id} = req.body
     try {
         let newUserDocumentations = await UserDocumentations.create({
-            name
+            user_id, documentation_id
         })
     
         if (newUserDocumentations){
@@ -70,10 +70,10 @@ export async function deleteUserDocumentations(req, res){
 
 export async function updateUserDocumentations(req, res){
     const {id}= req.params;
-    const { name, active } = req.body;
+    const { user_id, documentation_id, active } = req.body;
 
     const userDocumentationss = await UserDocumentations.findAll({
-        attributes: ['id', 'name', 'active'],
+        attributes: ['id', 'user_id', 'documentation_id', 'active'],
         where: {
             id
         }
@@ -82,7 +82,7 @@ export async function updateUserDocumentations(req, res){
     if (userDocumentationss.length > 0){
         userDocumentationss.forEach( async userDocumentationss => {
             await userDocumentationss.update({
-                name, 
+                user_id, documentation_id, 
                 active
             })        
         });

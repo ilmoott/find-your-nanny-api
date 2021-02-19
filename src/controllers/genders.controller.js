@@ -1,17 +1,17 @@
-import Stages from '../models/Stages';
+import Genders from '../models/Genders';
 
-export async function createStagess(req, res){
+export async function createGenderss(req, res){
  
     const {name} = req.body
     try {
-        let newStages = await Stages.create({
+        let newGenders = await Genders.create({
             name
         })
     
-        if (newStages){
+        if (newGenders){
             return res.json({
-                message: 'Stages created successfully',
-                data: newStages
+                message: 'Genders created successfully',
+                data: newGenders
             });
         }
     } catch (error) {
@@ -25,12 +25,12 @@ export async function createStagess(req, res){
  
 }
 
-export async function getStagess(req, res){
+export async function getGenderss(req, res){
     try {
 
-        const stages = await Stages.findAll();
+        const genders = await Genders.findAll();
         res.json({
-            data: stages
+            data: genders
         });
 
     } catch (error) {
@@ -43,45 +43,45 @@ export async function getStagess(req, res){
     }
 }
 
-export async function getStagesById(req, res){
+export async function getGendersById(req, res){
     const {id} = req.params;
-    const stages = await Stages.findOne({
+    const genders = await Genders.findOne({
         where:{
             id
         }
     })
 
-    res.json(stages)
+    res.json(genders)
 }
 
-export async function deleteStages(req, res){
+export async function deleteGenders(req, res){
     const {id}= req.params;
-    const deleteRowCount = await Stages.destroy({
+    const deleteRowCount = await Genders.destroy({
         where:{
             id
         }
     })
     res.json({
-        message: 'Stages deleted succesfully',
+        message: 'Genders deleted succesfully',
         count: deleteRowCount
 
     })
 }
 
-export async function updateStages(req, res){
+export async function updateGenders(req, res){
     const {id}= req.params;
     const { name, active } = req.body;
 
-    const stages = await Stages.findAll({
+    const genders = await Genders.findAll({
         attributes: ['id', 'name', 'active'],
         where: {
             id
         }
     })
 
-    if (stages.length > 0){
-        stages.forEach( async stages => {
-            await stages.update({
+    if (genders.length > 0){
+        genders.forEach( async genders => {
+            await genders.update({
                 name, 
                 active
             })        
@@ -89,6 +89,6 @@ export async function updateStages(req, res){
     }
 
     return res.json({
-        message: 'Stages Updated Successfully'
+        message: 'Genders Updated Successfully'
     })
 }

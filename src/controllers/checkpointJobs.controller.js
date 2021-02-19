@@ -2,10 +2,10 @@ import CheckpointJobs from '../models/CheckpointJobs';
 
 export async function createCheckpointJobss(req, res){
  
-    const {name} = req.body
+    const {job_id, description, date, hour} = req.body
     try {
         let newCheckpointJobs = await CheckpointJobs.create({
-            name
+            job_id, description, date, hour
         })
     
         if (newCheckpointJobs){
@@ -70,10 +70,10 @@ export async function deleteCheckpointJobs(req, res){
 
 export async function updateCheckpointJobs(req, res){
     const {id}= req.params;
-    const { name, active } = req.body;
+    const { job_id, description, date, hour, active } = req.body;
 
     const checkpointJobs = await CheckpointJobs.findAll({
-        attributes: ['id', 'name', 'active'],
+        attributes: ['id', 'job_id', 'description', 'date', 'hour', 'active'],
         where: {
             id
         }
@@ -82,13 +82,16 @@ export async function updateCheckpointJobs(req, res){
     if (checkpointJobs.length > 0){
         checkpointJobs.forEach( async checkpointJobs => {
             await checkpointJobs.update({
-                name, 
+                job_id, 
+                description, 
+                date, 
+                hour,
                 active
             })        
         });
     }
 
     return res.json({
-        message: 'Stages Updated Successfully'
+        message: 'CheckPoint Updated Successfully'
     })
 }

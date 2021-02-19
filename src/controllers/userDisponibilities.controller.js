@@ -2,10 +2,10 @@ import UserDisponibilities from '../models/UserDisponibilities';
 
 export async function createUserDisponibilitiess(req, res){
  
-    const {name} = req.body
+    const {user_id, initial_week_day, final_week_day, initial_hour, final_hour} = req.body
     try {
         let newUserDisponibilities = await UserDisponibilities.create({
-            name
+            user_id, initial_week_day, final_week_day, initial_hour, final_hour
         })
     
         if (newUserDisponibilities){
@@ -70,10 +70,10 @@ export async function deleteUserDisponibilities(req, res){
 
 export async function updateUserDisponibilities(req, res){
     const {id}= req.params;
-    const { name, active } = req.body;
+    const { user_id, initial_week_day, final_week_day, initial_hour, final_hour, active } = req.body;
 
     const userDisponibilities = await UserDisponibilities.findAll({
-        attributes: ['id', 'name', 'active'],
+        attributes: ['id', 'user_id', 'initial_week_day', 'final_week_day', 'initial_hour', 'final_hour', 'active'],
         where: {
             id
         }
@@ -82,7 +82,11 @@ export async function updateUserDisponibilities(req, res){
     if (userDisponibilities.length > 0){
         userDisponibilities.forEach( async userDisponibilities => {
             await userDisponibilities.update({
-                name, 
+                user_id, 
+                initial_week_day, 
+                final_week_day, 
+                initial_hour, 
+                final_hour,
                 active
             })        
         });

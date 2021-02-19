@@ -6,7 +6,7 @@ export async function createCancelJustifys(req, res){
     try {
         let newCancelJustify = await CancelJustify.create({
             name
-        })
+        })  
     
         if (newCancelJustify){
             return res.json({

@@ -1,6 +1,6 @@
 import WalletTransactions from '../models/WalletTransactions';
 
-export async function createWalletTransactionss(req, res){
+export async function createWalletTransactions(req, res){
  
     const {name} = req.body
     try {
@@ -25,7 +25,7 @@ export async function createWalletTransactionss(req, res){
  
 }
 
-export async function getWalletTransactionss(req, res){
+export async function getWalletTransactions(req, res){
     try {
 
         const walletTransactions = await WalletTransactions.findAll();

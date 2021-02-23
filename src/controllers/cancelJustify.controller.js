@@ -1,8 +1,9 @@
 import CancelJustify from '../models/CancelJustify';
 
-export async function createCancelJustifys(req, res){
+export async function createCancelJustify(req, res){
  
     const {name} = req.body
+ 
     try {
         let newCancelJustify = await CancelJustify.create({
             name
@@ -25,7 +26,7 @@ export async function createCancelJustifys(req, res){
  
 }
 
-export async function getCancelJustifys(req, res){
+export async function getCancelJustify(req, res){
     try {
 
         const cancelJustify = await CancelJustify.findAll();

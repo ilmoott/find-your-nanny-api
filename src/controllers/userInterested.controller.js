@@ -1,6 +1,6 @@
 import UserInterested from '../models/UserInterested';
 
-export async function createUserInteresteds(req, res){
+export async function createUserInterested(req, res){
  
     const {user_id, interested_description} = req.body
     try {
@@ -25,7 +25,7 @@ export async function createUserInteresteds(req, res){
  
 }
 
-export async function getUserInteresteds(req, res){
+export async function getUserInterested(req, res){
     try {
 
         const userInterested = await UserInterested.findAll();

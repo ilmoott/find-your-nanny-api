@@ -1,6 +1,6 @@
 import Tags from '../models/Tags';
 
-export async function createTagss(req, res){
+export async function createTags(req, res){
  
     const {name, type} = req.body
     try {
@@ -25,7 +25,7 @@ export async function createTagss(req, res){
  
 }
 
-export async function getTagss(req, res){
+export async function getTags(req, res){
     try {
 
         const tags = await Tags.findAll();

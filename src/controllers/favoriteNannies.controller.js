@@ -1,6 +1,6 @@
 import FavoriteNannies from '../models/FavoriteNannies';
 
-export async function createFavoriteNanniess(req, res){
+export async function createFavoriteNannies(req, res){
  
     const {parent_id, nanny_id, value} = req.body
     try {
@@ -25,7 +25,7 @@ export async function createFavoriteNanniess(req, res){
  
 }
 
-export async function getFavoriteNanniess(req, res){
+export async function getFavoriteNannies(req, res){
     try {
 
         const favoriteNannies = await FavoriteNannies.findAll();

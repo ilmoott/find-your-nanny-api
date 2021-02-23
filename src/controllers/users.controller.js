@@ -1,6 +1,6 @@
 import Users from '../models/Users';
 
-export async function createUserss(req, res){
+export async function createUsers(req, res){
  
     const {registered_number, 
            username, 
@@ -10,7 +10,7 @@ export async function createUserss(req, res){
            date_of_birth,
            age,
            gender_id,
-           adres,
+           adress,
            city,
            state,
            cell_phone,
@@ -29,7 +29,7 @@ export async function createUserss(req, res){
            date_of_birth,
            age,
            gender_id,
-           adres,
+           adress,
            city,
            state,
            cell_phone,
@@ -57,7 +57,7 @@ export async function createUserss(req, res){
  
 }
 
-export async function getUserss(req, res){
+export async function getUsers(req, res){
     try {
 
         const users = await Users.findAll();
@@ -110,7 +110,7 @@ export async function updateUsers(req, res){
         date_of_birth,
         age,
         gender_id,
-        adres,
+        adress,
         city,
         state,
         cell_phone,
@@ -129,7 +129,7 @@ export async function updateUsers(req, res){
         'date_of_birth',
         'age',
         'gender_id',
-        'adres',
+        'adress',
         'city',
         'state',
         'cell_phone',
@@ -154,7 +154,7 @@ export async function updateUsers(req, res){
                 date_of_birth,
                 age,
                 gender_id,
-                adres,
+                adress,
                 city,
                 state,
                 cell_phone,

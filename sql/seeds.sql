@@ -60,6 +60,7 @@ create table tags(
 create table stages(
 	id serial primary key, 
 	name	Varchar(120)	, 
+	active	bool default true,
 	created_at	timestamp default current_timestamp,
 	updated_at	timestamp,
 	imported_at	timestamp
@@ -213,6 +214,10 @@ create table jobs(
 	transaction_id	integer	,
 	min_pay_value	double precision	,
 	max_pay_value	double precision	,
+	active	bool default true,
+	created_at	timestamp default current_timestamp,
+	updated_at	timestamp,
+	imported_at	timestamp
 	
  	FOREIGN KEY (nanny_id) REFERENCES users (id),
  	FOREIGN KEY (parent_id) REFERENCES users (id) 

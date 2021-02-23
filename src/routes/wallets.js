@@ -4,7 +4,7 @@ import { createWallets,
     getWallets,
     getWalletById,
     deleteWallet,
-    updateWallet } from '../controllers/wallet.controller'
+    updateWallet } from '../controllers/wallets.controller'
 
 const router = Router();
 // /api/Wallet/
@@ -15,5 +15,4 @@ router.get('/', getWallets)
 router.get('/:id', getWalletById )
 router.delete('/:id', deleteWallet )
 router.put('/:id', updateWallet)
-
 export default router;

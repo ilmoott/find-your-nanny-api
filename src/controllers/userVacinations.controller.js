@@ -1,6 +1,6 @@
 import UserVacinations from '../models/UserVacinations';
 
-export async function createUserVacinationss(req, res){
+export async function createUserVacinations(req, res){
  
     const {user_id, vacination_id} = req.body
     try {
@@ -25,7 +25,7 @@ export async function createUserVacinationss(req, res){
  
 }
 
-export async function getUserVacinationss(req, res){
+export async function getUserVacinations(req, res){
     try {
 
         const userVacinations = await UserVacinations.findAll();

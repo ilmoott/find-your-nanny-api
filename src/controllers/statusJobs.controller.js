@@ -1,6 +1,6 @@
 import StatusJobs from '../models/StatusJobs';
 
-export async function createStatusJobss(req, res){
+export async function createStatusJobs(req, res){
  
     const {name} = req.body
     try {
@@ -25,7 +25,7 @@ export async function createStatusJobss(req, res){
  
 }
 
-export async function getStatusJobss(req, res){
+export async function getStatusJobs(req, res){
     try {
 
         const statusJobs = await StatusJobs.findAll();

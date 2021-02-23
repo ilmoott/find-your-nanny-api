@@ -1,6 +1,6 @@
 import Stages from '../models/Stages';
 
-export async function createStagess(req, res){
+export async function createStages(req, res){
  
     const {name} = req.body
     try {
@@ -25,7 +25,7 @@ export async function createStagess(req, res){
  
 }
 
-export async function getStagess(req, res){
+export async function getStages(req, res){
     try {
 
         const stages = await Stages.findAll();

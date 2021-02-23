@@ -1,6 +1,6 @@
 import UserPaymentMethods from '../models/UserPaymentMethods';
 
-export async function createUserPaymentMethodss(req, res){
+export async function createUserPaymentMethods(req, res){
  
     const {payment_method_id, user_id, type, agency, account, favorite} = req.body
     try {
@@ -30,7 +30,7 @@ export async function createUserPaymentMethodss(req, res){
  
 }
 
-export async function getUserPaymentMethodss(req, res){
+export async function getUserPaymentMethods(req, res){
     try {
 
         const userPaymentMethods = await UserPaymentMethods.findAll();

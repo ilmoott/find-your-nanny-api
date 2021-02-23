@@ -1,6 +1,6 @@
 import JobsStages from '../models/JobsStages';
 
-export async function createJobsStagess(req, res){
+export async function createJobsStages(req, res){
  
     const {job_id, tag_id} = req.body
     try {
@@ -25,7 +25,7 @@ export async function createJobsStagess(req, res){
  
 }
 
-export async function getJobsStagess(req, res){
+export async function getJobsStages(req, res){
     try {
 
         const jobsStages = await JobsStages.findAll();

@@ -1,17 +1,17 @@
-import UserWallets from '../models/UserWallets';
+import Wallets from '../models/Wallets';
 
-export async function createUserWalletss(req, res){
+export async function createWallets(req, res){
  
     const {name} = req.body
     try {
-        let newUserWallets = await UserWallets.create({
+        let newWallets = await Wallets.create({
             name
         })
     
-        if (newUserWallets){
+        if (newWallets){
             return res.json({
-                message: 'UserWallets created successfully',
-                data: newUserWallets
+                message: 'Wallets created successfully',
+                data: newWallets
             });
         }
     } catch (error) {
@@ -25,10 +25,10 @@ export async function createUserWalletss(req, res){
  
 }
 
-export async function getUserWalletss(req, res){
+export async function getWallets(req, res){
     try {
 
-        const userWallets = await UserWallets.findAll();
+        const userWallets = await Wallets.findAll();
         res.json({
             data: userWallets
         });
@@ -43,9 +43,9 @@ export async function getUserWalletss(req, res){
     }
 }
 
-export async function getUserWalletsById(req, res){
+export async function getWalletById(req, res){
     const {id} = req.params;
-    const userWallets = await UserWallets.findOne({
+    const userWallets = await Wallets.findOne({
         where:{
             id
         }
@@ -54,25 +54,25 @@ export async function getUserWalletsById(req, res){
     res.json(userWallets)
 }
 
-export async function deleteUserWallets(req, res){
+export async function deleteWallet(req, res){
     const {id}= req.params;
-    const deleteRowCount = await UserWallets.destroy({
+    const deleteRowCount = await Wallets.destroy({
         where:{
             id
         }
     })
     res.json({
-        message: 'UserWallets deleted succesfully',
+        message: 'Wallets deleted succesfully',
         count: deleteRowCount
 
     })
 }
 
-export async function updateUserWallets(req, res){
+export async function updateWallet(req, res){
     const {id}= req.params;
     const { name, active } = req.body;
 
-    const userWallets = await UserWallets.findAll({
+    const userWallets = await Wallets.findAll({
         attributes: ['id', 'name', 'active'],
         where: {
             id
@@ -89,6 +89,6 @@ export async function updateUserWallets(req, res){
     }
 
     return res.json({
-        message: 'UserWallets Updated Successfully'
+        message: 'Wallet Updated Successfully'
     })
 }

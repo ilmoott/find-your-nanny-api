@@ -1,6 +1,6 @@
 import Genders from '../models/Genders';
 
-export async function createGenderss(req, res){
+export async function createGenders(req, res){
  
     const {name} = req.body
     try {
@@ -25,7 +25,7 @@ export async function createGenderss(req, res){
  
 }
 
-export async function getGenderss(req, res){
+export async function getGenders(req, res){
     try {
 
         const genders = await Genders.findAll();

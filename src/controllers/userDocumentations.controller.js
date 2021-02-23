@@ -1,6 +1,6 @@
 import UserDocumentations from '../models/UserDocumentations';
 
-export async function createUserDocumentationss(req, res){
+export async function createUserDocumentations(req, res){
  
     const {user_id, documentation_id} = req.body
     try {
@@ -25,7 +25,7 @@ export async function createUserDocumentationss(req, res){
  
 }
 
-export async function getUserDocumentationss(req, res){
+export async function getUserDocumentations(req, res){
     try {
 
         const userDocumentationss = await UserDocumentations.findAll();

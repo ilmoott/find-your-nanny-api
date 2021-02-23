@@ -1,6 +1,6 @@
 import UserDisponibilities from '../models/UserDisponibilities';
 
-export async function createUserDisponibilitiess(req, res){
+export async function createUserDisponibilities(req, res){
  
     const {user_id, initial_week_day, final_week_day, initial_hour, final_hour} = req.body
     try {
@@ -25,7 +25,7 @@ export async function createUserDisponibilitiess(req, res){
  
 }
 
-export async function getUserDisponibilitiess(req, res){
+export async function getUserDisponibilities(req, res){
     try {
 
         const userDisponibilities = await UserDisponibilities.findAll();

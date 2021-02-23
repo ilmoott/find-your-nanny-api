@@ -1,7 +1,7 @@
 import Sequelize from 'sequelize'
 import {sequelize} from '../database/database'
 
-const Genders = sequelize.define('payment_methods',{
+const Genders = sequelize.define('genders',{
     id:{
         type: Sequelize.INTEGER,
         primaryKey: true,

@@ -1,6 +1,6 @@
 import PaymentMethods from '../models/PaymentMethods';
 
-export async function createPaymentMethodss(req, res){
+export async function createPaymentMethods(req, res){
  
     const {name} = req.body
     try {
@@ -25,7 +25,7 @@ export async function createPaymentMethodss(req, res){
  
 }
 
-export async function getPaymentMethodss(req, res){
+export async function getPaymentMethods(req, res){
     try {
 
         const paymentMethods = await PaymentMethods.findAll();

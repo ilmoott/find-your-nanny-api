@@ -1,6 +1,6 @@
 import CheckpointJobs from '../models/CheckpointJobs';
 
-export async function createCheckpointJobss(req, res){
+export async function createCheckpointJobs(req, res){
  
     const {job_id, description, date, hour} = req.body
     try {
@@ -25,7 +25,7 @@ export async function createCheckpointJobss(req, res){
  
 }
 
-export async function getCheckpointJobss(req, res){
+export async function getCheckpointJobs(req, res){
     try {
 
         const checkpointJobs = await CheckpointJobs.findAll();

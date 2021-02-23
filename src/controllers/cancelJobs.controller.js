@@ -1,6 +1,6 @@
 import CancelJobs from '../models/CancelJobs';
 
-export async function createCancelJobss(req, res){
+export async function createCancelJobs(req, res){
  
     const {job_id, cancel_id, comments} = req.body
     try {
@@ -27,7 +27,7 @@ export async function createCancelJobss(req, res){
  
 }
 
-export async function getCancelJobss(req, res){
+export async function getCancelJobs(req, res){
     try {
 
         const cancelJobs = await CancelJobs.findAll();

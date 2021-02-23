@@ -1,13 +1,15 @@
 import Jobs from '../models/Jobs';
 
-export async function createJobss(req, res){
+export async function createJobs(req, res){
  
     const {nanny_id, parent_id, adress, value,
            description, initial_date, final_date, initial_hour, final_hour,
            status_id, transaction_id, min_pay_value, max_pay_value } = req.body
     try {
         let newJobs = await Jobs.create({
-            name
+            nanny_id, parent_id, adress, value,
+           description, initial_date, final_date, initial_hour, final_hour,
+           status_id, transaction_id, min_pay_value, max_pay_value
         })
     
         if (newJobs){
@@ -27,7 +29,7 @@ export async function createJobss(req, res){
  
 }
 
-export async function getJobss(req, res){
+export async function getJobs(req, res){
     try {
 
         const jobs = await Jobs.findAll();

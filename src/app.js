@@ -13,6 +13,7 @@ import paymentMethodsRoutes from './routes/paymentMethods'
 import stagesRoutes from './routes/stages'
 import statusJobsRoutes from './routes/statusJobs'
 import tagsRoutes from './routes/tags'
+import JobstagsRoutes from './routes/jobsTags'
 import userDisponibilitiesRoutes from './routes/userDisponibilities'
 import userDocumentationsRoutes from './routes/userDocumentation'
 import userInterestedRoutes from './routes/userInterested'
@@ -42,7 +43,8 @@ app.use('/api/documentations', documentationRoutes)
 app.use('/api/cancel-justify', cancelJustifyRoutes)
 app.use('/api/genders', gendersRoutes)
 app.use('/api/jobs', jobsRoutes)
-app.use('/api/jobs-stages', jobsStagesRoutes)
+app.use('/api/job-stages', jobsStagesRoutes)
+app.use('/api/job-tags', JobstagsRoutes)
 app.use('/api/payment-methods', paymentMethodsRoutes)
 app.use('/api/stages', stagesRoutes)
 app.use('/api/status-jobs', statusJobsRoutes)
@@ -53,7 +55,7 @@ app.use('/api/user-interested', userInterestedRoutes)
 app.use('/api/user-payment-methods', userPaymentMethodsRoutes)
 app.use('/api/user-vacinations', userVacinationsRoutes)
 app.use('/api/wallets', walletsRoutes)
-app.use('/api/walletTransactions', walletTransactionsRoutes)
+app.use('/api/wallet-transactions', walletTransactionsRoutes)
 
 
 export default app;

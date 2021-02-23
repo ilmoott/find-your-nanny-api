@@ -15,19 +15,13 @@ const UserPaymentMethods = sequelize.define('user_payment_methods',{
     },    
     type: {
         type: Sequelize.STRING
-    }, 
-    type: {
-        type: Sequelize.STRING
-    },     
+    },    
     agency: {
         type: Sequelize.STRING
     },
     account: {
         type: Sequelize.STRING
-    },    
-    account: {
-        type: Sequelize.STRING
-    },     
+    },       
     favorite: {
         type: Sequelize.BOOLEAN
     },         

@@ -1,6 +1,6 @@
 import JobsTags from '../models/JobsTags';
 
-export async function createJobsTagss(req, res){
+export async function createJobsTags(req, res){
  
     const {user_id, job_id, tag_id} = req.body
     try {
@@ -25,7 +25,7 @@ export async function createJobsTagss(req, res){
  
 }
 
-export async function getJobsTagss(req, res){
+export async function getJobsTags(req, res){
     try {
 
         const jobsTags = await JobsTags.findAll();

@@ -1,19 +1,19 @@
 import { Router } from 'express'
 
-import { createJobTags, 
-    getJobTags,
-    getJobTagsById,
-    deleteJobTags,
-    updateJobTags } from '../controllers/jobTags.controller'
+import { createJobsTags, 
+    getJobsTags,
+    getJobsTagsById,
+    deleteJobsTags,
+    updateJobsTags } from '../controllers/jobsTags.controller'
 
 const router = Router();
 // /api/JobTags/
-router.post('/', createJobTags) 
-router.get('/', getJobTags)
+router.post('/', createJobsTags) 
+router.get('/', getJobsTags)
 
 // /api/JobTags/JobTagsID
-router.get('/:id', getJobTagsById )
-router.delete('/:id', deleteJobTags )
-router.put('/:id', updateJobTags)
+router.get('/:id', getJobsTagsById )
+router.delete('/:id', deleteJobsTags )
+router.put('/:id', updateJobsTags)
 
 export default router;

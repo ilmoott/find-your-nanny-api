@@ -2,10 +2,12 @@ import WalletTransactions from '../models/WalletTransactions';
 
 export async function createWalletTransactions(req, res){
  
-    const {name} = req.body
+    const {user_payment_method_from_id, user_payment_method_to_id, value} = req.body
     try {
         let newWalletTransactions = await WalletTransactions.create({
-            name
+            user_payment_method_from_id, 
+            user_payment_method_to_id, 
+            value
         })
     
         if (newWalletTransactions){
@@ -70,10 +72,10 @@ export async function deleteWalletTransactions(req, res){
 
 export async function updateWalletTransactions(req, res){
     const {id}= req.params;
-    const { name, active } = req.body;
+    const { user_payment_method_from_id, user_payment_method_to_id, value, active } = req.body;
 
     const walletTransactions = await WalletTransactions.findAll({
-        attributes: ['id', 'name', 'active'],
+        attributes: ['id', 'user_payment_method_from_id', 'user_payment_method_to_id', 'value', 'active'],
         where: {
             id
         }
@@ -82,7 +84,9 @@ export async function updateWalletTransactions(req, res){
     if (walletTransactions.length > 0){
         walletTransactions.forEach( async walletTransactions => {
             await walletTransactions.update({
-                name, 
+                user_payment_method_from_id, 
+                user_payment_method_to_id, 
+                value, 
                 active
             })        
         });

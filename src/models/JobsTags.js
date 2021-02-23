@@ -6,10 +6,7 @@ const JobsTags = sequelize.define('jobs_tags',{
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true
-    },
-    user_id: {
-        type: Sequelize.INTEGER
-    },
+    }, 
     job_id: {
         type: Sequelize.INTEGER
     },

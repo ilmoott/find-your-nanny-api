@@ -241,7 +241,7 @@ create table jobs_tags(
 create table jobs_stages(
 	id serial primary key, 
 	job_id	integer	,
-	tag_id	integer	,
+	stage_id	integer	,
 	active	bool default true,
 	created_at	timestamp default current_timestamp,
 	updated_at	timestamp,
